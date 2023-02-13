@@ -15,7 +15,7 @@ export default function Uploadpopup() {
   const navigate = useNavigate();
   const uploadbtn = useRef();
   const { categorys, setCategorys } = useContext(PopupContextcreate);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [categoryExist, setCategoryExist] = useState(false);
   const loginschema = yup.object().shape({
     title: yup.string().required("Can't be empty!"),
