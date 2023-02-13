@@ -1,0 +1,85 @@
+.loginsignupcontainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btncontainer {
+  width: 400px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loginbtn {
+  width: 100%;
+  background-color: aqua;
+  border: none;
+  border-radius: 5px 0px 0px 0px;
+}
+
+.signupbtn {
+  width: 100%;
+  background-color: chartreuse;
+  border: none;
+  border-radius: 0px 5px 0px 0px;
+}
+
+.logincontainer {
+  width: 400px;
+  height: max-content;
+  background-color: white;
+  border-radius: 0px 0px 5px 5px;
+  padding: 0px 30px;
+}
+
+.logincontainer label {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #0275d8;
+}
+
+.logincontainer input {
+  width: 100%;
+  height: 35px;
+  padding: 15px;
+  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.logincontainer input:focus {
+  outline: none;
+  border: none;
+  border: 1px solid#0275d8;
+}
+
+.logincontainer p {
+  color: red;
+  position: relative;
+  bottom: 15px;
+}
+
+.logincontainer .lgnbtn {
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0275d8;
+  color: white;
+  padding: 0px;
+}
+
+.logincontainer .lgnbtn:hover {
+  cursor: pointer;
+}
+
+.logincontainer .usernotfound {
+  color: red;
+  text-align: center;
+}

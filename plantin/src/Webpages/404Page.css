@@ -1,0 +1,30 @@
+.errorpagecontainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.p1 {
+  font-size: 10rem;
+  color: orangered;
+}
+
+.p2 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.p3 {
+  font-weight: bold;
+}
+
+.bthlink {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  font-weight: bold;
+}

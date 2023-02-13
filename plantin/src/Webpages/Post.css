@@ -1,0 +1,48 @@
+.postmaincontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 40px;
+}
+
+.cardscontainer {
+  width: 295px;
+  height: 350px;
+  border-radius: 10px;
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+  background-color: white;
+}
+
+.cardscontainer:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.cardimage {
+  width: 100%;
+  height: 200px;
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.cardcontent {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.cardtitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.carddescription {
+  line-height: 21px;
+  text-align: justify;
+}

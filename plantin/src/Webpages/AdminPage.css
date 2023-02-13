@@ -1,0 +1,71 @@
+.adminpostmaincontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+
+.admincardscontainer {
+  width: 295px;
+  height: 350px;
+  border-radius: 5px 5px 0px 0px;
+  transition: 0.5s ease-in-out;
+  background-color: white;
+}
+
+.adminmap {
+  transition: 0.5s ease-in-out;
+}
+.adminmap:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.admincardimage {
+  width: 100%;
+  height: 200px;
+  text-align: center;
+}
+
+.adminimage {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.admincardcontent {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.admincardtitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.admincarddescription {
+  line-height: 21px;
+  text-align: justify;
+}
+
+.admindelebtn {
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 0px 0px 0px 5px;
+  background-color: #00000010;
+}
+
+.admindelebtn .icon {
+  position: relative;
+  top: 2px;
+  right: 2px;
+}
+
+.admindelebtn:hover {
+  cursor: pointer;
+}

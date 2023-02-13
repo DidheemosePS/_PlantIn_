@@ -1,0 +1,97 @@
+.contactmain {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0px 50px;
+}
+
+.leftcontact {
+  width: 100%;
+  height: 55%;
+  padding: 25px 0px;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.leftcontact p,
+h1 {
+  margin-left: 40%;
+}
+
+.phoneicon,
+.mailicon {
+  position: relative;
+  top: 10px;
+  margin-left: 40%;
+}
+
+.followus {
+  margin-left: 40%;
+}
+
+.followus h2 {
+  margin-bottom: 10px;
+}
+
+.followus .icons {
+  display: flex;
+  gap: 20px;
+}
+.rightcontact {
+  width: 100%;
+  height: 55%;
+  /* background-color: red; */
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rightcontact input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: whitesmoke;
+}
+
+.rightcontact input:focus {
+  outline: none;
+}
+
+.rightcontact textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  resize: none;
+  border: 1px solid black;
+  background-color: whitesmoke;
+}
+
+.rightcontact textarea:focus {
+  outline: none;
+}
+
+.rightcontact button {
+  width: 100px;
+  height: 30px;
+  color: white;
+  background-color: #0275d8;
+  border-radius: 5px;
+  border: none;
+}
+
+.sentbtn {
+  position: relative;
+  top: 2px;
+  left: 5px;
+}
+
+.phoneicon,
+.mailicon,
+.icon,
+.rightcontact button:hover {
+  cursor: pointer;
+}

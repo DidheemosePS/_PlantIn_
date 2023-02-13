@@ -1,0 +1,62 @@
+.deletealertmain {
+  width: 350px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 30px;
+  border: 1px solid #00000050;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.deletealertmain .icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.deletealertmain .icons .icon {
+  color: red;
+}
+
+.deletealertmain .icons .title {
+  font-weight: bold;
+}
+
+.deletealertmain .buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.deletealertmain .buttons .nobtn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  background-color: rgba(255, 0, 0, 0.23);
+}
+
+.deletealertmain .buttons .yesbtn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  background-color: red;
+}
+
+.deletealertmain .buttons .nobtn,
+.yesbtn:hover {
+  cursor: pointer;
+}

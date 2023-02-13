@@ -1,0 +1,145 @@
+.uploadpopupcontainer {
+  width: 100%;
+  height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadform {
+  width: 400px;
+  height: max-content;
+  padding: 20px 30px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.uploadform p {
+  color: red;
+  position: relative;
+  bottom: 10px;
+}
+
+.formlabel {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.uploadform form .forminput {
+  width: 100%;
+  height: 35px;
+  border: 1px solid #0275d8;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.uploadform form textarea {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #0275d8;
+  border-radius: 5px;
+  padding: 15px;
+  resize: none;
+  margin-bottom: 20px;
+}
+
+.uploadcategory {
+  width: 100px;
+  height: 30px;
+  border: 1px solid #0275d8;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-right: 35px;
+  padding: 5px;
+}
+
+.addcategory {
+  width: max-content;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #0275d8;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.upload p {
+  color: black;
+}
+
+.cancelbtn {
+  border: none;
+  color: white;
+  background-color: #0275d8;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  margin-left: 36%;
+}
+
+.uploadbtn {
+  border: none;
+  color: white;
+  background-color: #0275d8;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  margin-left: 15px;
+}
+
+.upload,
+.cancelbtn,
+.uploadbtn,
+.addcategory,
+.addcategorycancel,
+.addcategorysubmit:hover {
+  cursor: pointer;
+}
+
+.uploadaddcategory {
+  width: max-content;
+  height: 61px;
+  position: relative;
+  left: 135px;
+  bottom: 252px;
+  z-index: 10;
+}
+
+.uploadaddcategory .addcategoryinput {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #0275d8;
+  border-radius: 5px;
+  padding: 0px 10px;
+}
+
+.uploadaddcategory p {
+  color: red;
+  position: relative;
+  top: 3px;
+}
+
+.uploadaddcategory .addcategorycancel {
+  width: 55px;
+  height: max-content;
+  float: right;
+  padding: 2px 5px;
+  margin-top: 10px;
+  margin-right: 15px;
+  border: none;
+  color: white;
+  background-color: #0275d8;
+  border-radius: 5px;
+}
+.uploadaddcategory .addcategorysubmit {
+  width: 55px;
+  height: max-content;
+  float: right;
+  padding: 2px 5px;
+  margin-top: 10px;
+  border: none;
+  color: white;
+  background-color: #0275d8;
+  border-radius: 5px;
+}

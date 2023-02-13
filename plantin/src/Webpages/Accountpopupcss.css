@@ -1,0 +1,52 @@
+.accountpopupmain {
+  background-color: white;
+  width: 190px;
+  height: 210px;
+  position: fixed;
+  z-index: 8;
+  top: 70px;
+  right: 50px;
+  border-radius: 10px;
+  padding: 0px 15px;
+  /* border: 1px solid rgb(207, 205, 205); */
+}
+
+.useraccount {
+  height: 40px;
+  border-bottom: 1px solid #00000015;
+}
+
+.useraccounticon {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 5px;
+}
+
+.navpages {
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.navpageslink {
+  text-decoration: none;
+  color: black;
+  position: relative;
+}
+
+.navpageslink:hover {
+  font-weight: 600;
+}
+
+.arrowicon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.navpageslink:hover .arrowicon {
+  right: 2px;
+}

@@ -1,0 +1,69 @@
+.admin {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminlogincontainer {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.adminlogincontainer label {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #0275d8;
+}
+
+.adminlogincontainer input {
+  width: 100%;
+  height: 35px;
+  padding: 15px;
+  border: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.adminlogincontainer input:focus {
+  outline: none;
+  border: none;
+  border: 1px solid#0275d8;
+}
+
+.adminlogincontainer p {
+  color: red;
+  position: relative;
+  bottom: 15px;
+}
+
+.adminlogincontainer .adminbtn {
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0275d8;
+  color: white;
+  padding: 0px;
+}
+
+.adminlogincontainer .adminbtn:hover {
+  cursor: pointer;
+}
+
+.adminlogincontainer .accessdenied {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.adminpage {
+  position: relative;
+  top: 150px;
+  padding-bottom: 30px;
+}

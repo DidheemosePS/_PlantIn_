@@ -1,0 +1,12 @@
+.aboutmain {
+  position: relative;
+  top: 80px;
+  padding: 50px;
+}
+
+.aboutcontent {
+  margin-bottom: 50px;
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+}
