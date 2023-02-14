@@ -12,7 +12,7 @@ export default function PostInDetail() {
 
   useEffect(() => {
     try {
-      axios.get(`https://plantin.onrender.com/post/${id}`).then((response) => {
+      axios.get(`http://localhost:3004/post/${id}`).then((response) => {
         response.data.success ? setValue(response.data.post) : navigate("*");
       });
     } catch (err) {
@@ -29,13 +29,15 @@ export default function PostInDetail() {
       <div className="postindetaildiv">
         <div className="postindetailtitle">{value.title}</div>
         <div className="postindetaildes">{value.description}</div>
-        <button
-          onClick={() => window.open(`${value.fileurl}`, "_self")}
-          className="postdownloadbtn"
-        >
-          <MdDownload size={20} />
-          <p>Download</p>
-        </button>
+        {value.fileurl && (
+          <button
+            onClick={() => window.open(`${value.fileurl}`, "_self")}
+            className="postdownloadbtn"
+          >
+            <MdDownload size={20} />
+            <p>Download</p>
+          </button>
+        )}
         <PostComments id={id} />
       </div>
     </div>

@@ -92,7 +92,7 @@ export default function Uploadpopup() {
             )
             .then((response) => {
               axios
-                .post("https://plantin.onrender.com/upload", {
+                .post("http://localhost:3004upload", {
                   userid: userid.id,
                   role: userid.role,
                   title: data.title,
@@ -114,7 +114,7 @@ export default function Uploadpopup() {
       } else {
         try {
           axios
-            .post("https://plantin.onrender.com/upload", {
+            .post("http://localhost:3004upload", {
               userid: userid.id,
               role: userid.role,
               title: data.title,
@@ -124,7 +124,7 @@ export default function Uploadpopup() {
             })
             .then((response) => {
               sessionStorage.removeItem("imageurl");
-              response.data.success && navigate("/");
+              response.data.success && navigate("/profile");
             });
           uploadbtn.current.removeAttribute("disabled");
           uploadbtn.current.style.opacity = "100%";
@@ -139,11 +139,9 @@ export default function Uploadpopup() {
 
   useEffect(() => {
     try {
-      axios
-        .get("https://plantin.onrender.com/category/fetch")
-        .then((response) => {
-          setCategorys(response.data);
-        });
+      axios.get("http://localhost:3004/category/fetch").then((response) => {
+        setCategorys(response.data);
+      });
     } catch (err) {
       console.log(err);
     }
@@ -228,7 +226,7 @@ export default function Uploadpopup() {
             })}
             onSubmit={async (addCategory, { resetForm }) => {
               const response = await axios.post(
-                "https://plantin.onrender.com/category/add",
+                "http://localhost:3004category/add",
                 {
                   addcategory: addCategory.addcategory,
                 }

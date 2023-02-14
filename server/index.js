@@ -29,7 +29,7 @@ const collectionCategorys = db.collection("Categorys");
 
 app.get("/", async (req, res) => {
   try {
-    const data = await collectionPost.find().sort({ _id: -1 }).toArray();
+    const data = await collectionPost.find().toArray();
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -77,8 +77,9 @@ app.post("/signup", async (req, res) => {
     if (login) {
       res.json("user already exist");
     } else {
+      const convert = name.charAt(0).toUpperCase() + name.slice(1);
       await collectionLogin.insertOne({
-        name: name,
+        name: convert,
         email: email,
         password: password,
         confirmPassword: confirmPassword,
@@ -198,6 +199,15 @@ app.post("/AdminLogin", async (req, res) => {
   }
 });
 
+app.get("/admin/fetchpost", async (req, res) => {
+  try {
+    const data = await collectionPost.find().sort({ _id: -1 }).toArray();
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.post("/admin/removepost", async (req, res) => {
   try {
     const { id } = req.body;
@@ -207,7 +217,7 @@ app.post("/admin/removepost", async (req, res) => {
     await collectionPost.deleteOne({
       _id: ObjectId(id),
     });
-    const data = await collectionPost.find().toArray();
+    const data = await collectionPost.find().sort({ _id: -1 }).toArray();
     res.json(data);
     await collectionComments.deleteMany({ postid: id });
     await collectionReplays.deleteMany({ postid: id });
@@ -231,7 +241,10 @@ app.post("/removepost", async (req, res) => {
     await collectionPost.deleteOne({
       _id: ObjectId(id),
     });
-    const data = await collectionPost.find({ userid: userid }).toArray();
+    const data = await collectionPost
+      .find({ userid: userid })
+      .sort({ _id: -1 })
+      .toArray();
     data.length ? res.json(data) : res.json({ error: "Not Found" });
     await collectionComments.deleteMany({ postid: id });
     await collectionReplays.deleteMany({ postid: id });
@@ -266,7 +279,10 @@ app.post("/editpost", async (req, res) => {
           { _id: ObjectId(postid) },
           { $set: { title, description, category, fileurl: updatefileurl } }
         );
-        const editPost = await collectionPost.find({ userid }).toArray();
+        const editPost = await collectionPost
+          .find({ userid })
+          .sort({ _id: -1 })
+          .toArray();
         res.json(editPost);
         const deleteFile = fileurl.slice(60);
         cloudinary.uploader.destroy(deleteFile, { resource_type: "raw" });
@@ -282,7 +298,10 @@ app.post("/editpost", async (req, res) => {
           { _id: ObjectId(postid) },
           { $set: { title, description, category, imageurl: updateimageurl } }
         );
-        const editPost = await collectionPost.find({ userid }).toArray();
+        const editPost = await collectionPost
+          .find({ userid })
+          .sort({ _id: -1 })
+          .toArray();
         res.json(editPost);
         const deleteImage = imageurl.slice(62, -4);
         cloudinary.uploader.destroy(deleteImage);
@@ -295,7 +314,10 @@ app.post("/editpost", async (req, res) => {
           { _id: ObjectId(postid) },
           { $set: { title, description, category } }
         );
-        const editPost = await collectionPost.find({ userid }).toArray();
+        const editPost = await collectionPost
+          .find({ userid })
+          .sort({ _id: -1 })
+          .toArray();
         res.json(editPost);
       } catch (err) {
         console.log(err);
@@ -317,7 +339,10 @@ app.post("/editpost", async (req, res) => {
             },
           }
         );
-        const editPost = await collectionPost.find({ userid }).toArray();
+        const editPost = await collectionPost
+          .find({ userid })
+          .sort({ _id: -1 })
+          .toArray();
         res.json(editPost);
         const deleteImage = imageurl.slice(62, -4);
         cloudinary.uploader.destroy(deleteImage);
@@ -335,7 +360,10 @@ app.post("/editpost", async (req, res) => {
 app.post("/profile", async (req, res) => {
   try {
     const { id } = req.body;
-    const data = await collectionPost.find({ userid: id }).toArray();
+    const data = await collectionPost
+      .find({ userid: id })
+      .sort({ _id: -1 })
+      .toArray();
     data.length ? res.json(data) : res.json({ error: "Not Found" });
   } catch (err) {
     console.log(err);

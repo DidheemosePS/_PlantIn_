@@ -10,7 +10,7 @@ export default function Category() {
   const { categorys, setCategorys } = useContext(PopupContextcreate);
 
   useEffect(() => {
-    axios.get("https://plantin.onrender.com/category/fetch").then((response) => {
+    axios.get("http://localhost:3004/category/fetch").then((response) => {
       setCategorys(response.data);
     });
     // eslint-disable-next-line

@@ -28,6 +28,14 @@
   gap: 30px;
 }
 
+.postindetaildiv .postindetailtitle {
+  font-weight: bold;
+}
+
+.postindetaildiv .postindetaildes {
+  white-space: break-spaces;
+}
+
 .postdownloadbtn {
   width: 100px;
   height: 30px;

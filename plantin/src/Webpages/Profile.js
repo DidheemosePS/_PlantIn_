@@ -22,7 +22,7 @@ export default function Profile() {
   const deletefunction = async (id) => {
     try {
       await axios
-        .post("https://plantin.onrender.com/removepost", {
+        .post("http://localhost:3004/removepost", {
           id,
           userid: decoded.id,
         })
@@ -42,7 +42,7 @@ export default function Profile() {
   useEffect(() => {
     try {
       axios
-        .post("https://plantin.onrender.com/profile", {
+        .post("http://localhost:3004/profile", {
           id: decoded.id,
         })
         .then((response) => {

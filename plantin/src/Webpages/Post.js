@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import "./Post.css";
 import { CategoryContextcreate } from "./context/categoryContext";
-// import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -9,10 +8,26 @@ export default function Post() {
   const { data, setResults } = useContext(CategoryContextcreate);
   const navigate = useNavigate();
 
+  const shuffle = (arrayData) => {
+    const shuffledArray = [];
+    const usedIndexes = [];
+    let i = 0;
+    while (i < arrayData.length) {
+      const randomNumber = Math.floor(Math.random() * arrayData.length);
+      if (!usedIndexes.includes(randomNumber)) {
+        shuffledArray.push(arrayData[randomNumber]);
+        console.log(arrayData[randomNumber]);
+        usedIndexes.push(randomNumber);
+        i++;
+      }
+    }
+    setResults(shuffledArray);
+  };
+
   useEffect(() => {
     try {
-      axios.get("https://plantin.onrender.com/").then((response) => {
-        setResults(response.data);
+      axios.get("http://localhost:3004/").then((response) => {
+        shuffle(response.data);
       });
     } catch (err) {
       console.log(err);
