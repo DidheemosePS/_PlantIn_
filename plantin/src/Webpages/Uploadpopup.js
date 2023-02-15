@@ -92,7 +92,7 @@ export default function Uploadpopup() {
             )
             .then((response) => {
               axios
-                .post("http://localhost:3004upload", {
+                .post("https://plantin.onrender.com/upload", {
                   userid: userid.id,
                   role: userid.role,
                   title: data.title,
@@ -114,7 +114,7 @@ export default function Uploadpopup() {
       } else {
         try {
           axios
-            .post("http://localhost:3004upload", {
+            .post("https://plantin.onrender.com/upload", {
               userid: userid.id,
               role: userid.role,
               title: data.title,
@@ -137,11 +137,56 @@ export default function Uploadpopup() {
     }
   };
 
+  const [bottom, setBottom] = useState("252px");
+
+  useEffect(() => {
+    if (
+      (errors.title &&
+        errors.description &&
+        errors.select &&
+        errors.uploadimage) ||
+      (!errors.title &&
+        errors.description &&
+        errors.select &&
+        errors.uploadimage) ||
+      (!errors.title &&
+        !errors.description &&
+        errors.select &&
+        errors.uploadimage) ||
+      (errors.title &&
+        !errors.description &&
+        errors.select &&
+        errors.uploadimage)
+    ) {
+      setBottom("295px");
+    } else if (
+      (!errors.title &&
+        !errors.description &&
+        !errors.select &&
+        errors.uploadimage) ||
+      (errors.title &&
+        errors.description &&
+        !errors.select &&
+        errors.uploadimage) ||
+      (errors.title &&
+        errors.description &&
+        errors.select &&
+        !errors.uploadimage)
+    ) {
+      setBottom("274px");
+    } else {
+      setBottom("252px");
+    }
+    // eslint-disable-next-line
+  }, [loginschema]);
+
   useEffect(() => {
     try {
-      axios.get("http://localhost:3004/category/fetch").then((response) => {
-        setCategorys(response.data);
-      });
+      axios
+        .get("https://plantin.onrender.com/category/fetch")
+        .then((response) => {
+          setCategorys(response.data);
+        });
     } catch (err) {
       console.log(err);
     }
@@ -226,7 +271,7 @@ export default function Uploadpopup() {
             })}
             onSubmit={async (addCategory, { resetForm }) => {
               const response = await axios.post(
-                "http://localhost:3004category/add",
+                "https://plantin.onrender.com/category/add",
                 {
                   addcategory: addCategory.addcategory,
                 }
@@ -245,7 +290,13 @@ export default function Uploadpopup() {
               <form
                 onSubmit={formik.handleSubmit}
                 autoComplete="off"
-                className="uploadaddcategory"
+                style={{
+                  width: "max-content",
+                  height: "61px",
+                  position: "relative",
+                  left: "135px",
+                  bottom: bottom,
+                }}
               >
                 <input
                   type="text"
@@ -257,9 +308,11 @@ export default function Uploadpopup() {
                 />
                 <br />
                 {formik.errors.addcategory && (
-                  <p>{formik.errors.addcategory}</p>
+                  <p className="categoryerror">{formik.errors.addcategory}</p>
                 )}
-                {categoryExist && <p>Already Exist</p>}
+                {categoryExist && (
+                  <p className="categoryerror">Already Exist</p>
+                )}
                 <input
                   type="submit"
                   value="Add"

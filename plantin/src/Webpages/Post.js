@@ -16,7 +16,6 @@ export default function Post() {
       const randomNumber = Math.floor(Math.random() * arrayData.length);
       if (!usedIndexes.includes(randomNumber)) {
         shuffledArray.push(arrayData[randomNumber]);
-        console.log(arrayData[randomNumber]);
         usedIndexes.push(randomNumber);
         i++;
       }
@@ -26,7 +25,7 @@ export default function Post() {
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:3004/").then((response) => {
+      axios.get("https://plantin.onrender.com/").then((response) => {
         shuffle(response.data);
       });
     } catch (err) {
