@@ -183,6 +183,10 @@ export default function Uploadpopup() {
       (!errors.title &&
         errors.description &&
         errors.select &&
+        !errors.uploadimage) ||
+      (!errors.title &&
+        !errors.description &&
+        errors.select &&
         !errors.uploadimage)
     ) {
       setBottom("274px");
