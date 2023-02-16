@@ -48,7 +48,7 @@ export function PostCommentsEdit({
             type="button"
             value="Cancel"
             onClick={() => setUpdate(false)}
-            className="submitbtn"
+            className="commentcancelbtn"
           />
           <input type="submit" value="Update" className="submitbtn" />
         </form>
@@ -103,7 +103,7 @@ export function PostCommentsReplayEdit({
             type="button"
             value="Cancel"
             onClick={() => setUpdate(false)}
-            className="submitbtn"
+            className="repliescancelbtn"
           />
           <input type="submit" value="Update" className="submitbtn" />
         </form>

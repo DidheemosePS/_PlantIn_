@@ -12,6 +12,9 @@ import Page from "./Webpages/404Page";
 import Login from "./Webpages/Login";
 import PostInDetail from "./Webpages/PostInDetail";
 import Uploadloadpopup from "./Webpages/Uploadpopup";
+import SignedUsers from "./Webpages/SignedUsers";
+import LoggedUsers from "./Webpages/LoggedUsers";
+
 import {
   LoginPrivateRoute,
   AdminPrivateRoute,
@@ -77,6 +80,8 @@ export default function App() {
         </Route>
         <Route element={<AdminPrivateRoute />}>
           <Route path="/adminpage" element={<AdminPage />}></Route>
+          <Route path="/signed/users" element={<SignedUsers />}></Route>
+          <Route path="/logged/users" element={<LoggedUsers />}></Route>
         </Route>
       </Routes>
     </PopupContext>

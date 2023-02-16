@@ -3,7 +3,7 @@ import "./MainRouter.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AccountContextcreate } from "./context/Accountpopupcontext";
 import Accountpopup from "./Accountpopup";
-import { MdAccountCircle } from "react-icons/md";
+import { BsPersonCircle } from "react-icons/bs";
 import { FiUpload } from "react-icons/fi";
 import { HiMenu } from "react-icons/hi";
 import PlantIn from "./Images/PlantInLogo.png";
@@ -60,7 +60,7 @@ export default function MainRouter() {
           onClick={() => setAccountpopup(!accountpopup)}
         >
           <HiMenu size={25} className="iconsspace" />
-          <MdAccountCircle size={35} />
+          <BsPersonCircle size={30} />
         </button>
       </div>
       {accountpopup && <Accountpopup />}

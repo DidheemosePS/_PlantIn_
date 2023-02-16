@@ -8,6 +8,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import ProfileEdit from "./ProfileEdit";
 import notFoundimage from "./Images/notFound.png";
 import { DeleteAlertBoxs } from "./AlertBoxs";
+import { BsPersonCircle } from "react-icons/bs";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -65,16 +66,20 @@ export default function Profile() {
               className="profilecardscontainer"
               onClick={() => navigate(`/post/${data._id}`)}
             >
+              <div className="username">
+                <BsPersonCircle size={25} className="icons" />
+                <p>{data.uploader}</p>
+              </div>
+              <div className="profilecardcontent">
+                <div className="profilecardtitle">{data.title}</div>
+                <p className="profilecarddescription">{data.description}</p>
+              </div>
               <div className="profilecardimage">
                 <img
                   className="profileimage"
                   src={data.imageurl}
                   alt="Something went wrong"
                 ></img>
-              </div>
-              <div className="profilecardcontent">
-                <div className="profilecardtitle">{data.title}</div>
-                <p className="profilecarddescription">{data.description}</p>
               </div>
             </div>
             <button

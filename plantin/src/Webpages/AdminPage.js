@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { AdminDeleteAlertBoxs } from "./AlertBoxs";
+import { BsPersonCircle } from "react-icons/bs";
 
 export default function AdminPage() {
   const navigate = useNavigate();
@@ -45,16 +46,20 @@ export default function AdminPage() {
               className="admincardscontainer"
               onClick={() => navigate(`/post/${data._id}`)}
             >
+              <div className="username">
+                <BsPersonCircle size={25} className="icons" />
+                <p>{data.uploader}</p>
+              </div>
+              <div className="admincardcontent">
+                <div className="admincardtitle">{data.title}</div>
+                <div className="admincarddescription">{data.description}</div>
+              </div>
               <div className="admincardimage">
                 <img
                   className="adminimage"
                   src={data.imageurl}
                   alt="Something went wrong"
                 ></img>
-              </div>
-              <div className="admincardcontent">
-                <div className="admincardtitle">{data.title}</div>
-                <div className="admincarddescription">{data.description}</div>
               </div>
             </div>
             <button

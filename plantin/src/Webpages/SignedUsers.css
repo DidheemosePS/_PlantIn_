@@ -1,0 +1,33 @@
+.signeduserslist {
+  width: 100%;
+  height: 100vh;
+  padding: 120px 20px;
+}
+.signedusers {
+  border-color: #00000015;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.usersdetail {
+  height: 40px;
+  text-align: start;
+  padding-left: 20px;
+  background-color: white;
+}
+
+.usersdeletebtn {
+  text-align: center;
+  background-color: white;
+}
+
+.usersdeletebtn .deletebtn {
+  border: none;
+  color: red;
+  border-bottom: 1px solid red;
+  background-color: white;
+}
+
+.usersdeletebtn .deletebtn:hover {
+  cursor: pointer;
+}

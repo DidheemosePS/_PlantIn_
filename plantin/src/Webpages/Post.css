@@ -8,7 +8,7 @@
 
 .cardscontainer {
   width: 295px;
-  height: 350px;
+  height: 355px;
   border-radius: 10px;
   transition: 0.5s ease-in-out;
   overflow: hidden;
@@ -20,10 +20,30 @@
   transform: scale(1.1);
   cursor: pointer;
 }
+
+.cardscontainer .username {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.cardscontainer .username .icons {
+  opacity: 75%;
+}
+
+.cardscontainer .username p {
+  color: rgb(85, 85, 85);
+  font-weight: bold;
+}
+
 .cardimage {
   width: 100%;
-  height: 200px;
-  text-align: center;
+  height: 165px;
 }
 
 .image {
@@ -34,16 +54,16 @@
 
 .cardcontent {
   width: 100%;
-  height: 100%;
-  padding: 10px;
+  height: 145px;
+  padding: 0px 10px;
+  overflow: hidden;
 }
 
 .cardtitle {
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 
 .carddescription {
-  line-height: 21px;
-  text-align: justify;
+  white-space: break-spaces;
 }

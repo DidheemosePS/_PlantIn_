@@ -17,6 +17,13 @@
   outline: none;
 }
 
+.commentcancelbtn,
+.repliescancelbtn {
+  border: none;
+  color: black;
+  background-color: whitesmoke;
+}
+
 .comments .submitbtn,
 .replaysubmitbtn {
   border: none;
@@ -27,6 +34,8 @@
 }
 
 .comments .submitbtn,
+.commentcancelbtn,
+.repliescancelbtn,
 .replaysubmitbtn:hover {
   cursor: pointer;
 }

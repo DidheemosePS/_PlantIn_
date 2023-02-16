@@ -17,6 +17,7 @@ export default function Uploadpopup() {
   const { categorys, setCategorys } = useContext(PopupContextcreate);
   const [isOpen, setIsOpen] = useState(false);
   const [categoryExist, setCategoryExist] = useState(false);
+  const uploader = sessionStorage.getItem("username");
   const loginschema = yup.object().shape({
     title: yup.string().required("Can't be empty!"),
     description: yup.string().required("Can't be empty!"),
@@ -94,6 +95,7 @@ export default function Uploadpopup() {
               axios
                 .post("https://plantin.onrender.com/upload", {
                   userid: userid.id,
+                  uploader,
                   role: userid.role,
                   title: data.title,
                   description: data.description,
@@ -116,6 +118,7 @@ export default function Uploadpopup() {
           axios
             .post("https://plantin.onrender.com/upload", {
               userid: userid.id,
+              uploader,
               role: userid.role,
               title: data.title,
               description: data.description,
@@ -198,11 +201,9 @@ export default function Uploadpopup() {
 
   useEffect(() => {
     try {
-      axios
-        .get("https://plantin.onrender.com/category/fetch")
-        .then((response) => {
-          setCategorys(response.data);
-        });
+      axios.get("https://plantin.onrender.com/category/fetch").then((response) => {
+        setCategorys(response.data);
+      });
     } catch (err) {
       console.log(err);
     }
@@ -267,16 +268,16 @@ export default function Uploadpopup() {
             style={{ display: "none" }}
           />
           <input
-            type="button"
-            className="cancelbtn"
-            value="Cancel"
-            onClick={() => navigate(-1)}
-          />
-          <input
             type="submit"
             value="Upload"
             className="uploadbtn"
             ref={uploadbtn}
+          />
+          <input
+            type="button"
+            className="cancelbtn"
+            value="Cancel"
+            onClick={() => navigate(-1)}
           />
         </form>
         {isOpen && (

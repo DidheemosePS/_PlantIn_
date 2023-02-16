@@ -3,6 +3,7 @@ import "./Post.css";
 import { CategoryContextcreate } from "./context/categoryContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BsPersonCircle } from "react-icons/bs";
 
 export default function Post() {
   const { data, setResults } = useContext(CategoryContextcreate);
@@ -39,16 +40,20 @@ export default function Post() {
       {data.map((data) => (
         <div onClick={() => navigate(`/post/${data._id}`)} key={data._id}>
           <div className="cardscontainer">
+            <div className="username">
+              <BsPersonCircle size={25} className="icons" />
+              <p>{data.uploader}</p>
+            </div>
+            <div className="cardcontent">
+              <div className="cardtitle">{data.title}</div>
+              <div className="carddescription">{data.description}</div>
+            </div>
             <div className="cardimage">
               <img
                 className="image"
                 src={data.imageurl}
                 alt="Something went wrong"
               ></img>
-            </div>
-            <div className="cardcontent">
-              <div className="cardtitle">{data.title}</div>
-              <div className="carddescription">{data.description}</div>
             </div>
           </div>
         </div>

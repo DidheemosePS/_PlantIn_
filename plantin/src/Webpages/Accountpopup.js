@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Accountpopupcss.css";
 import { BiChevronRight } from "react-icons/bi";
-import { MdAccountCircle } from "react-icons/md";
+import { BsPersonCircle } from "react-icons/bs";
 import { AccountContextcreate } from "./context/Accountpopupcontext";
 import { useContext } from "react";
 import { PopupContextcreate } from "./context/popupcontext";
@@ -16,15 +16,25 @@ export default function Accountpopup() {
   return (
     <div className="accountpopupmain" ref={menudrop}>
       <div className="useraccount">
-        <MdAccountCircle size={25} className="useraccounticon" />
+        <BsPersonCircle size={25} className="useraccounticon" />
         {username ? <>{username}</> : <>Username</>}
       </div>
       <div className="navpages">
         {isAdmin ? (
-          <Link to="/AdminPage" className="navpageslink">
-            Admin Page
-            <BiChevronRight className="arrowicon" />
-          </Link>
+          <>
+            <Link to="/signed/users" className="navpageslink">
+              Signed Users
+              <BiChevronRight className="arrowicon" />
+            </Link>
+            <Link to="/logged/users" className="navpageslink">
+              Logged Users
+              <BiChevronRight className="arrowicon" />
+            </Link>
+            <Link to="/AdminPage" className="navpageslink">
+              Users Post
+              <BiChevronRight className="arrowicon" />
+            </Link>
+          </>
         ) : null}
         <Link to="/profile" className="navpageslink">
           Profile

@@ -21,7 +21,7 @@ const uri = process.env.MONGODB_URL;
 const client = new MongoClient(uri);
 const db = client.db("PlantIn");
 const collectionPost = db.collection("Posts");
-const collectionLogin = db.collection("Users");
+const collectionUsers = db.collection("Users");
 const collectionAdmin = db.collection("Admin");
 const collectionComments = db.collection("PostComments");
 const collectionReplays = db.collection("CommentsReplays");
@@ -51,7 +51,7 @@ app.get("/post/:id", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const login = await collectionLogin.findOne({
+    const login = await collectionUsers.findOne({
       email: email,
       password: password,
     });
@@ -72,13 +72,13 @@ app.post("/login", async (req, res) => {
 app.post("/signup", async (req, res) => {
   try {
     const { name, email, password, confirmPassword } = req.body;
-    const login = await collectionLogin.findOne({ email: email });
+    const login = await collectionUsers.findOne({ email: email });
 
     if (login) {
       res.json("user already exist");
     } else {
       const convert = name.charAt(0).toUpperCase() + name.slice(1);
-      await collectionLogin.insertOne({
+      await collectionUsers.insertOne({
         name: convert,
         email: email,
         password: password,
@@ -94,12 +94,20 @@ app.post("/signup", async (req, res) => {
 
 app.post("/upload", async (req, res) => {
   try {
-    const { userid, title, description, category, imageurl, fileurl } =
-      req.body;
+    const {
+      userid,
+      uploader,
+      title,
+      description,
+      category,
+      imageurl,
+      fileurl,
+    } = req.body;
     if (fileurl) {
       try {
         await collectionPost.insertOne({
           userid,
+          uploader,
           title,
           description,
           category,
@@ -114,6 +122,7 @@ app.post("/upload", async (req, res) => {
       try {
         await collectionPost.insertOne({
           userid,
+          uploader,
           title,
           description,
           category,
@@ -478,6 +487,26 @@ app.post("/post/comments/replays/edit", async (req, res) => {
     );
     const updatedReplay = await collectionReplays.find({ commentid }).toArray();
     res.json(updatedReplay);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get("/signed/users", async (req, res) => {
+  try {
+    const data = await collectionUsers.find().toArray();
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.post("/signed/user/delete", async (req, res) => {
+  try {
+    const { id } = req.body;
+    await collectionUsers.deleteOne({ _id: ObjectId(id) });
+    const response = await collectionUsers.find().toArray();
+    res.json(response);
   } catch (err) {
     console.log(err);
   }
