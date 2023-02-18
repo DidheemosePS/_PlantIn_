@@ -58,8 +58,8 @@ export default function Accountpopup() {
         {isLogin || isAdmin ? (
           <Link
             to="/"
-            onClick={async () => {
-              isLogin && (await loginstatus());
+            onClick={() => {
+              isLogin && loginstatus();
               sessionStorage.clear();
               setIsLogin(false);
               setIsAdmin(false);
