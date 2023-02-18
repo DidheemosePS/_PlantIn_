@@ -28,9 +28,11 @@ export default function AdminPage() {
 
   useEffect(() => {
     try {
-      axios.get("https://plantin.onrender.com/admin/fetchpost").then((response) => {
-        setAdminResults(response.data);
-      });
+      axios
+        .get("https://plantin.onrender.com/admin/fetchpost")
+        .then((response) => {
+          setAdminResults(response.data);
+        });
     } catch (err) {
       console.log(err);
     }
@@ -46,6 +48,13 @@ export default function AdminPage() {
               className="admincardscontainer"
               onClick={() => navigate(`/post/${data._id}`)}
             >
+              <div className="admincardimage">
+                <img
+                  className="adminimage"
+                  src={data.imageurl}
+                  alt="Something went wrong"
+                ></img>
+              </div>
               <div className="username">
                 <BsPersonCircle size={25} className="icons" />
                 <p>{data.uploader}</p>
@@ -53,13 +62,6 @@ export default function AdminPage() {
               <div className="admincardcontent">
                 <div className="admincardtitle">{data.title}</div>
                 <div className="admincarddescription">{data.description}</div>
-              </div>
-              <div className="admincardimage">
-                <img
-                  className="adminimage"
-                  src={data.imageurl}
-                  alt="Something went wrong"
-                ></img>
               </div>
             </div>
             <button

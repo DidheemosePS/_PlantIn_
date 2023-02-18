@@ -66,6 +66,13 @@ export default function Profile() {
               className="profilecardscontainer"
               onClick={() => navigate(`/post/${data._id}`)}
             >
+              <div className="profilecardimage">
+                <img
+                  className="profileimage"
+                  src={data.imageurl}
+                  alt="Something went wrong"
+                ></img>
+              </div>
               <div className="username">
                 <BsPersonCircle size={25} className="icons" />
                 <p>{data.uploader}</p>
@@ -73,13 +80,6 @@ export default function Profile() {
               <div className="profilecardcontent">
                 <div className="profilecardtitle">{data.title}</div>
                 <p className="profilecarddescription">{data.description}</p>
-              </div>
-              <div className="profilecardimage">
-                <img
-                  className="profileimage"
-                  src={data.imageurl}
-                  alt="Something went wrong"
-                ></img>
               </div>
             </div>
             <button

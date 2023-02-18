@@ -40,6 +40,13 @@ export default function Post() {
       {data.map((data) => (
         <div onClick={() => navigate(`/post/${data._id}`)} key={data._id}>
           <div className="cardscontainer">
+            <div className="cardimage">
+              <img
+                className="image"
+                src={data.imageurl}
+                alt="Something went wrong"
+              ></img>
+            </div>
             <div className="username">
               <BsPersonCircle size={25} className="icons" />
               <p>{data.uploader}</p>
@@ -47,13 +54,6 @@ export default function Post() {
             <div className="cardcontent">
               <div className="cardtitle">{data.title}</div>
               <div className="carddescription">{data.description}</div>
-            </div>
-            <div className="cardimage">
-              <img
-                className="image"
-                src={data.imageurl}
-                alt="Something went wrong"
-              ></img>
             </div>
           </div>
         </div>

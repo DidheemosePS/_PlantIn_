@@ -31,7 +31,7 @@
 }
 
 .profilecardscontainer .username p {
-  color: rgb(85, 85, 85);
+  color: rgb(50, 50, 50);
   font-weight: bold;
 }
 
@@ -46,12 +46,14 @@
 .profilecardimage {
   width: 100%;
   height: 165px;
+  padding: 10px;
 }
 
 .profileimage {
   width: 100%;
   height: 100%;
   object-fit: fill;
+  border-radius: 10px;
 }
 
 .profilecardcontent {
