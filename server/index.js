@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const { MongoClient, ObjectId } = require("mongodb");
+const cors = require("cors");
 const { sign, verify } = require("jsonwebtoken");
 const cloudinary = require("cloudinary").v2;
 
@@ -13,6 +14,8 @@ cloudinary.config({
 
 const app = express();
 dotenv.config({ path: "./.env" });
+app.use(cors());
+app.use(express.json());
 
 const uri = process.env.MONGODB_URL;
 const client = new MongoClient(uri);
