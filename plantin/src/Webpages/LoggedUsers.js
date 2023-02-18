@@ -4,7 +4,7 @@ import axios from "axios";
 export default function LoggedUsers() {
   const [loggedUsers, setLoggedUser] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3004/logged/users").then((response) => {
+    axios.get("https://plantin.onrender.com/logged/users").then((response) => {
       setLoggedUser(response.data);
     });
   }, []);

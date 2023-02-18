@@ -12,7 +12,7 @@ export default function PostInDetail() {
 
   useEffect(() => {
     try {
-      axios.get(`http://localhost:3004/post/${id}`).then((response) => {
+      axios.get(`https://plantin.onrender.com/post/${id}`).then((response) => {
         response.data.success ? setValue(response.data.post) : navigate("*");
       });
     } catch (err) {
