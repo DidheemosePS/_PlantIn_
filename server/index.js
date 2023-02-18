@@ -61,12 +61,24 @@ app.post("/login", async (req, res) => {
         "oieutrnstadasdhj"
       );
       res.json(accessToken);
+      await collectionUsers.updateOne(
+        { _id: ObjectId(login._id) },
+        { $set: { loginstatus: "active" } }
+      );
     } else {
       res.json({ error: "LoginError" });
     }
   } catch (err) {
     console.log(err);
   }
+});
+
+app.post("/logout", async (req, res) => {
+  const { id } = req.body;
+  await collectionUsers.updateOne(
+    { _id: ObjectId(id) },
+    { $set: { loginstatus: "inactive" } }
+  );
 });
 
 app.post("/signup", async (req, res) => {
@@ -366,9 +378,9 @@ app.post("/editpost", async (req, res) => {
   }
 });
 
-app.post("/profile", async (req, res) => {
+app.get("/profile/:id", async (req, res) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     const data = await collectionPost
       .find({ userid: id })
       .sort({ _id: -1 })
@@ -393,9 +405,9 @@ app.post("/post/comments", async (req, res) => {
   }
 });
 
-app.post("/post/comments/fetch", async (req, res) => {
+app.get("/post/comments/fetch/:id", async (req, res) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     const response = await collectionComments
       .find({ postid: id })
       .sort({ _id: -1 })
@@ -457,9 +469,9 @@ app.post("/post/comments/replays", async (req, res) => {
   }
 });
 
-app.post("/post/comments/replays/fetch", async (req, res) => {
+app.get("/post/comments/replays/fetch/:id", async (req, res) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     const response = await collectionReplays.find({ postid: id }).toArray();
     res.json(response);
   } catch (err) {
@@ -512,4 +524,15 @@ app.post("/signed/user/delete", async (req, res) => {
   }
 });
 
-app.listen(3004, () => console.log("Connected Successfully"));
+app.get("/logged/users", async (req, res) => {
+  try {
+    const data = await collectionUsers
+      .aggregate([{ $match: { loginstatus: "active" } }])
+      .toArray();
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.listen(3004, () => console.log("Server Created Successfully"));

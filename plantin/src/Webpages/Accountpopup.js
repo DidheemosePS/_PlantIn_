@@ -5,6 +5,8 @@ import { BsPersonCircle } from "react-icons/bs";
 import { AccountContextcreate } from "./context/Accountpopupcontext";
 import { useContext } from "react";
 import { PopupContextcreate } from "./context/popupcontext";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 export default function Accountpopup() {
   const { menudrop } = useContext(AccountContextcreate);
@@ -12,7 +14,12 @@ export default function Accountpopup() {
     useContext(PopupContextcreate);
   const navigate = useNavigate();
   const username = sessionStorage.getItem("username");
-
+  const loginstatus = async () => {
+    const decode = jwt_decode(sessionStorage.getItem("ghasjdsbdnewiqyew"));
+    await axios.post("http://localhost:3004/logout", {
+      id: decode.id,
+    });
+  };
   return (
     <div className="accountpopupmain" ref={menudrop}>
       <div className="useraccount">
@@ -51,7 +58,8 @@ export default function Accountpopup() {
         {isLogin || isAdmin ? (
           <Link
             to="/"
-            onClick={() => {
+            onClick={async () => {
+              isLogin && (await loginstatus());
               sessionStorage.clear();
               setIsLogin(false);
               setIsAdmin(false);

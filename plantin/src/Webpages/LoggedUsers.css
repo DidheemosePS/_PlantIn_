@@ -1,0 +1,18 @@
+.loggeduserslist {
+  width: 100%;
+  height: 100vh;
+  padding: 120px 20px;
+}
+.loggedusers {
+  border-color: #00000015;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.loggedusers .usersdetail {
+  width: max-content;
+  height: 40px;
+  text-align: start;
+  padding-left: 20px;
+  background-color: white;
+}

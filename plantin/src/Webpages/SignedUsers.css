@@ -9,7 +9,8 @@
   width: 100%;
 }
 
-.usersdetail {
+.signedusers .usersdetail {
+  width: max-content;
   height: 40px;
   text-align: start;
   padding-left: 20px;

@@ -89,7 +89,7 @@ export default function ProfileEdit({
             )
             .then((response) => {
               axios
-                .post("https://plantin.onrender.com/editpost", {
+                .post("http://localhost:3004/editpost", {
                   postid: editProfileData._id,
                   userid: userid.id,
                   title: data.title,
@@ -113,7 +113,7 @@ export default function ProfileEdit({
           await imageupload(data.uploadimage[0]);
           const imageurl = sessionStorage.getItem("imageurl");
           axios
-            .post("https://plantin.onrender.com/editpost", {
+            .post("http://localhost:3004/editpost", {
               postid: editProfileData._id,
               userid: userid.id,
               title: data.title,
@@ -135,7 +135,7 @@ export default function ProfileEdit({
       ) {
         try {
           axios
-            .post("https://plantin.onrender.com/editpost", {
+            .post("http://localhost:3004/editpost", {
               postid: editProfileData._id,
               userid: userid.id,
               title: data.title,
@@ -170,7 +170,7 @@ export default function ProfileEdit({
             )
             .then((response) => {
               axios
-                .post("https://plantin.onrender.com/editpost", {
+                .post("http://localhost:3004/editpost", {
                   postid: editProfileData._id,
                   userid: userid.id,
                   title: data.title,
@@ -198,7 +198,7 @@ export default function ProfileEdit({
   useEffect(() => {
     try {
       axios
-        .get("https://plantin.onrender.com/category/fetch")
+        .get("http://localhost:3004/category/fetch")
         .then((response) => {
           setCategorys(response.data);
         });
@@ -295,7 +295,7 @@ export default function ProfileEdit({
           })}
           onSubmit={async (addCategory, { resetForm }) => {
             const response = await axios.post(
-              "https://plantin.onrender.com/category/add",
+              "http://localhost:3004/category/add",
               {
                 addcategory: addCategory.addcategory,
               }
