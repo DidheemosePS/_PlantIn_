@@ -11,29 +11,32 @@ export default function Category() {
   const userid = jwt_decode(sessionStorage.getItem("ghasjdsbdnewiqyew"));
 
   const deletecategory = async (categoryid) => {
-    const response = await axios.post("https://plantin.onrender.com/category/delete", {
-      categoryid,
-    });
+    const response = await axios.post(
+      "https://plantin.onrender.com/category/delete",
+      {
+        categoryid,
+      }
+    );
     setCategorys(response.data);
   };
 
   useEffect(() => {
-    axios.get("https://plantin.onrender.com/category/fetch").then((response) => {
-      setCategorys(response.data);
-    });
+    axios
+      .get("https://plantin.onrender.com/category/fetch")
+      .then((response) => {
+        setCategorys(response.data);
+      });
     // eslint-disable-next-line
   }, []);
   return (
     <div className="maincategory">
       <div className="category">
-        {categorys && (
-          <button
-            className="categorybutton"
-            onClick={() => categoryfun("All Items")}
-          >
-            All Items
-          </button>
-        )}
+        <button
+          className="categorybutton"
+          onClick={() => categoryfun("All Items")}
+        >
+          All Items
+        </button>
         {categorys.map((data) => (
           <div className="categorymap" key={data._id}>
             <button
@@ -42,12 +45,12 @@ export default function Category() {
             >
               {data.category}
             </button>
-            {userid.role === "user" && (
+            {userid.role === "admin" && (
               <button
                 className="categorydeletebtn"
                 onClick={() => deletecategory(data._id)}
               >
-                <MdDeleteOutline size={20} />
+                <MdDeleteOutline size={20} className="icons" />
               </button>
             )}
           </div>

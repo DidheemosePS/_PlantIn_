@@ -49,10 +49,16 @@
   width: max-content;
   height: max-content;
   border: none;
+  background-color: whitesmoke;
   transition: 0.5s ease-in-out;
 }
 
 .categorydeletebtn:hover {
   cursor: pointer;
   color: red;
+}
+
+.categorydeletebtn .icons {
+  position: relative;
+  top: 3px;
 }
