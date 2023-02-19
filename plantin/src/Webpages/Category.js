@@ -8,36 +8,33 @@ import jwt_decode from "jwt-decode";
 export default function Category() {
   const { categoryfun } = useContext(CategoryContextcreate);
   const { categorys, setCategorys } = useContext(PopupContextcreate);
-  const userid = jwt_decode(sessionStorage.getItem("ghasjdsbdnewiqyew"));
-
+  const token = sessionStorage.getItem("ghasjdsbdnewiqyew");
   const deletecategory = async (categoryid) => {
-    const response = await axios.post(
-      "https://plantin.onrender.com/category/delete",
-      {
-        categoryid,
-      }
-    );
+    const response = await axios.post("https://plantin.onrender.com/category/delete", {
+      categoryid,
+    });
     setCategorys(response.data);
   };
 
   useEffect(() => {
-    axios
-      .get("https://plantin.onrender.com/category/fetch")
-      .then((response) => {
-        setCategorys(response.data);
-      });
+    axios.get("https://plantin.onrender.com/category/fetch").then((response) => {
+      setCategorys(response.data);
+    });
     // eslint-disable-next-line
   }, []);
   return (
     <div className="maincategory">
       <div className="category">
-        <button
-          className="categorybutton"
-          onClick={() => categoryfun("All Items")}
-        >
-          All Items
-        </button>
-        {categorys.map((data) => (
+        {categorys.slice(0, 1).map((data) => (
+          <button
+            className="categorybutton"
+            key={data._id}
+            onClick={() => categoryfun(data.category)}
+          >
+            {data.category}
+          </button>
+        ))}
+        {categorys.slice(1).map((data) => (
           <div className="categorymap" key={data._id}>
             <button
               className="categorybutton"
@@ -45,7 +42,7 @@ export default function Category() {
             >
               {data.category}
             </button>
-            {userid.role === "admin" && (
+            {token && jwt_decode(token).role === "admin" && (
               <button
                 className="categorydeletebtn"
                 onClick={() => deletecategory(data._id)}
