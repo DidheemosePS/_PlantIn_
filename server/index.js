@@ -536,10 +536,14 @@ app.get("/logged/users", async (req, res) => {
 });
 
 app.post("/category/delete", async (req, res) => {
-  const { categoryid } = req.body;
-  await collectionCategorys.deleteOne({ _id: ObjectId(categoryid) });
-  const data = await collectionCategorys.find().toArray();
-  res.json(data);
+  try {
+    const { categoryid } = req.body;
+    await collectionCategorys.deleteOne({ _id: ObjectId(categoryid) });
+    const data = await collectionCategorys.find().toArray();
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.listen(3004, () => console.log("Server Created Successfully"));

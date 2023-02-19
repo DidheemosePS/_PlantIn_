@@ -10,16 +10,25 @@ export default function Category() {
   const { categorys, setCategorys } = useContext(PopupContextcreate);
   const token = sessionStorage.getItem("ghasjdsbdnewiqyew");
   const deletecategory = async (categoryid) => {
-    const response = await axios.post("https://plantin.onrender.com/category/delete", {
-      categoryid,
-    });
-    setCategorys(response.data);
+    try {
+      const response = await axios.post(
+        "https://plantin.onrender.com/category/delete",
+        {
+          categoryid,
+        }
+      );
+      setCategorys(response.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
-    axios.get("https://plantin.onrender.com/category/fetch").then((response) => {
-      setCategorys(response.data);
-    });
+    axios
+      .get("https://plantin.onrender.com/category/fetch")
+      .then((response) => {
+        setCategorys(response.data);
+      });
     // eslint-disable-next-line
   }, []);
   return (
