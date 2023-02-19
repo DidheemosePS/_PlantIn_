@@ -20,9 +20,14 @@
   display: none;
 }
 
+.categorymap {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
 .categorybutton {
   background-color: white;
-  border: 1px solid rgb(207, 205, 205);
   border: 1px solid white;
   border-radius: 16px;
   padding: 6px 12px;
@@ -38,4 +43,16 @@
 .categorybutton:hover {
   border: 1px solid black;
   cursor: pointer;
+}
+
+.categorydeletebtn {
+  width: max-content;
+  height: max-content;
+  border: none;
+  transition: 0.5s ease-in-out;
+}
+
+.categorydeletebtn:hover {
+  cursor: pointer;
+  color: red;
 }
