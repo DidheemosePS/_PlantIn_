@@ -15,7 +15,7 @@ export default function AdminPage() {
   const deletefunction = async (id) => {
     try {
       const response = await axios.post(
-        "https://plantin.onrender.com/admin/removepost",
+        "http://15.206.169.100:3004/admin/removepost",
         {
           id,
         }
@@ -29,7 +29,7 @@ export default function AdminPage() {
   useEffect(() => {
     try {
       axios
-        .get("https://plantin.onrender.com/admin/fetchpost")
+        .get("http://15.206.169.100:3004/admin/fetchpost")
         .then((response) => {
           setAdminResults(response.data);
         });

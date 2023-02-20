@@ -45,7 +45,7 @@ export default function Login() {
       loginbtn.current.setAttribute("disabled", "disabled");
       loginbtn.current.style.opacity = "50%";
       await axios
-        .post("https://plantin.onrender.com/login", data)
+        .post("http://15.206.169.100:3004/login", data)
         .then((response) => {
           if (response.data.error) {
             setInvalid(true);

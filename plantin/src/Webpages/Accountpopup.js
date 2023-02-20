@@ -16,7 +16,7 @@ export default function Accountpopup() {
   const username = sessionStorage.getItem("username");
   const loginstatus = async () => {
     const decode = jwt_decode(sessionStorage.getItem("ghasjdsbdnewiqyew"));
-    await axios.post("https://plantin.onrender.com/logout", {
+    await axios.post("http://15.206.169.100:3004/logout", {
       id: decode.id,
     });
   };

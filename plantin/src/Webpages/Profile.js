@@ -23,7 +23,7 @@ export default function Profile() {
   const deletefunction = async (id) => {
     try {
       await axios
-        .post("https://plantin.onrender.com/removepost", {
+        .post("http://15.206.169.100:3004/removepost", {
           id,
           userid: decoded.id,
         })
@@ -43,7 +43,7 @@ export default function Profile() {
   useEffect(() => {
     try {
       axios
-        .get(`https://plantin.onrender.com/profile/${decoded.id}`)
+        .get(`http://15.206.169.100:3004/profile/${decoded.id}`)
         .then((response) => {
           response.data.error
             ? setnotFound(true)

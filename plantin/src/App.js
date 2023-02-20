@@ -33,7 +33,7 @@ export default function App() {
       const sessionStorageToken = sessionStorage.getItem("ghasjdsbdnewiqyew");
       if (sessionStorageToken) {
         axios
-          .post("https://plantin.onrender.com/validate", {
+          .post("http://15.206.169.100:3004/validate", {
             sessionStorageToken,
           })
           .then((response) => {

@@ -32,7 +32,7 @@ export default function PostComments({ id }) {
   const commentsfetch = async () => {
     try {
       const response = await axios.get(
-        `https://plantin.onrender.com/post/comments/fetch/${id}`
+        `http://15.206.169.100:3004/post/comments/fetch/${id}`
       );
       setPostComments(response.data);
     } catch (err) {
@@ -43,7 +43,7 @@ export default function PostComments({ id }) {
   const repliesfetch = async () => {
     try {
       const response = await axios.get(
-        `https://plantin.onrender.com/post/comments/replays/fetch/${id}`
+        `http://15.206.169.100:3004/post/comments/replays/fetch/${id}`
       );
       setReplay(response.data);
     } catch (err) {
@@ -54,7 +54,7 @@ export default function PostComments({ id }) {
   const commentDelete = async (id, postid) => {
     try {
       const response = await axios.post(
-        "https://plantin.onrender.com/post/comments/delete",
+        "http://15.206.169.100:3004/post/comments/delete",
         {
           id,
           postid,
@@ -70,7 +70,7 @@ export default function PostComments({ id }) {
   const repliesDelete = async (id, commentid) => {
     try {
       const response = await axios.post(
-        "https://plantin.onrender.com/post/comments/replays/delete",
+        "http://15.206.169.100:3004/post/comments/replays/delete",
         {
           id,
           commentid,
@@ -98,7 +98,7 @@ export default function PostComments({ id }) {
         })}
         onSubmit={(data, { resetForm }) => {
           axios
-            .post("https://plantin.onrender.com/post/comments", {
+            .post("http://15.206.169.100:3004/post/comments", {
               postid: id,
               userid: userid.id,
               username,
@@ -193,7 +193,7 @@ export default function PostComments({ id }) {
                   })}
                   onSubmit={async (replay, { resetForm }) => {
                     const response = await axios.post(
-                      "https://plantin.onrender.com/post/comments/replays",
+                      "http://15.206.169.100:3004/post/comments/replays",
                       {
                         postid: data.postid,
                         commentid: data._id,

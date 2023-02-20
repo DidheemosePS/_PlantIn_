@@ -12,7 +12,7 @@ export default function Category() {
   const deletecategory = async (categoryid) => {
     try {
       const response = await axios.post(
-        "https://plantin.onrender.com/category/delete",
+        "http://15.206.169.100:3004/category/delete",
         {
           categoryid,
         }
@@ -25,7 +25,7 @@ export default function Category() {
 
   useEffect(() => {
     axios
-      .get("https://plantin.onrender.com/category/fetch")
+      .get("http://15.206.169.100:3004/category/fetch")
       .then((response) => {
         setCategorys(response.data);
       });
