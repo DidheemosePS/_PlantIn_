@@ -20,7 +20,7 @@ export function PostCommentsEdit({
       onSubmit={async (comment, { resetForm }) => {
         try {
           const response = await axios.post(
-            "http://15.206.169.100:3004/post/comments/edit",
+            "https://plantin.onrender.com/post/comments/edit",
             {
               commentid: commentid,
               postid,
@@ -74,7 +74,7 @@ export function PostCommentsReplayEdit({
       onSubmit={async (replay, { resetForm }) => {
         try {
           const response = await axios.post(
-            "http://15.206.169.100:3004/post/comments/replays/edit",
+            "https://plantin.onrender.com/post/comments/replays/edit",
             {
               replayid,
               commentid,

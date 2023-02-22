@@ -8,7 +8,7 @@ export default function SignedUsers() {
   const deleteusers = async (id) => {
     try {
       const deleteuser = await axios.post(
-        "http://15.206.169.100:3004/signed/user/delete",
+        "https://plantin.onrender.com/signed/user/delete",
         {
           id,
         }
@@ -21,7 +21,7 @@ export default function SignedUsers() {
 
   useEffect(() => {
     try {
-      axios.get("http://15.206.169.100:3004/signed/users").then((response) => {
+      axios.get("https://plantin.onrender.com/signed/users").then((response) => {
         setSignedUsers(response.data);
       });
     } catch (err) {

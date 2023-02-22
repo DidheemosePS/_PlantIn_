@@ -26,7 +26,7 @@ export default function Post() {
 
   useEffect(() => {
     try {
-      axios.get("http://15.206.169.100:3004/").then((response) => {
+      axios.get("https://plantin.onrender.com/").then((response) => {
         shuffle(response.data);
       });
     } catch (err) {

@@ -93,7 +93,7 @@ export default function Uploadpopup() {
             )
             .then((response) => {
               axios
-                .post("http://15.206.169.100:3004/upload", {
+                .post("https://plantin.onrender.com/upload", {
                   userid: userid.id,
                   uploader,
                   role: userid.role,
@@ -116,7 +116,7 @@ export default function Uploadpopup() {
       } else {
         try {
           axios
-            .post("http://15.206.169.100:3004/upload", {
+            .post("https://plantin.onrender.com/upload", {
               userid: userid.id,
               uploader,
               role: userid.role,
@@ -201,7 +201,7 @@ export default function Uploadpopup() {
 
   useEffect(() => {
     try {
-      axios.get("http://15.206.169.100:3004/category/fetch").then((response) => {
+      axios.get("https://plantin.onrender.com/category/fetch").then((response) => {
         setCategorys(response.data);
       });
     } catch (err) {
@@ -288,7 +288,7 @@ export default function Uploadpopup() {
             })}
             onSubmit={async (addCategory, { resetForm }) => {
               const response = await axios.post(
-                "http://15.206.169.100:3004/category/add",
+                "https://plantin.onrender.com/category/add",
                 {
                   addcategory: addCategory.addcategory,
                 }

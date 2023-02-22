@@ -46,7 +46,7 @@ export default function Signup({ bcklogin }) {
       signupbtn.current.setAttribute("disabled", "disabled");
       signupbtn.current.style.opacity = "50%";
       await axios
-        .post("http://15.206.169.100:3004/signup", data)
+        .post("https://plantin.onrender.com/signup", data)
         .then((response) => {
           response.data === "Success" ? bcklogin(true) : setUser(true);
         });

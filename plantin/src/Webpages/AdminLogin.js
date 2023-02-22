@@ -36,7 +36,7 @@ export default function AdminLogin() {
       adminloginbtn.current.setAttribute("disabled", "disabled");
       adminloginbtn.current.style.opacity = "50%";
       await axios
-        .post("http://15.206.169.100:3004/AdminLogin", data)
+        .post("https://plantin.onrender.com/AdminLogin", data)
         .then((response) => {
           if (response.data.error) {
             setInvalid(true);
