@@ -26,7 +26,7 @@ export default function Post() {
 
   useEffect(() => {
     try {
-      axios.get("https://plantin.onrender.com/").then((response) => {
+      axios.get("https://plantinapp.me/").then((response) => {
         shuffle(response.data);
       });
     } catch (err) {
