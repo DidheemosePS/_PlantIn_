@@ -562,5 +562,5 @@ app.post("/category/delete", async (req, res) => {
 });
 
 app.listen(3004, () => console.log("Server Created Successfully"));
-const https = https.createServer(cred, app);
-https.listen(8443);
+const httpsServer = https.createServer(cred, app);
+httpsServer.listen(8443);
