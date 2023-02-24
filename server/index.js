@@ -13,6 +13,7 @@ const cred = {
   key: fs.readFileSync("./ssl/plantinapp_me.key"),
 }
 
+dotenv.config({ path: "./.env" });
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -28,7 +29,6 @@ app.use((req, res, next) => {
     next();
   }
 })
-dotenv.config({ path: "./.env" });
 app.use(cors());
 app.use(express.json());
 

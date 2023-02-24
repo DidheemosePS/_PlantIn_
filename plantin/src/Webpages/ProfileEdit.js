@@ -271,7 +271,12 @@ export default function ProfileEdit({
           style={{ display: "none" }}
         />
         <p>{errors.uploadfile?.message}</p>
-
+        <input
+          type="submit"
+          value="Upload"
+          className="uploadbtn"
+          ref={uploadbtn}
+        />
         <input
           type="button"
           value="Cancel"
@@ -279,12 +284,6 @@ export default function ProfileEdit({
           onClick={() => {
             setSortProfileData();
           }}
-        />
-        <input
-          type="submit"
-          value="Upload"
-          className="uploadbtn"
-          ref={uploadbtn}
         />
       </form>
       {isOpen && (
