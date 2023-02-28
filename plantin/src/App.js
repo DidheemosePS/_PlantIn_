@@ -24,6 +24,7 @@ import {
 import Profile from "./Webpages/Profile";
 import AdminPage from "./Webpages/AdminPage";
 import axios from "axios";
+import CategoryPost from "./Webpages/CategoryPost";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -33,7 +34,7 @@ export default function App() {
       const sessionStorageToken = sessionStorage.getItem("ghasjdsbdnewiqyew");
       if (sessionStorageToken) {
         axios
-          .post("https://plantinapp.me/validate", {
+          .post("http://localhost:3004/validate", {
             sessionStorageToken,
           })
           .then((response) => {
@@ -65,6 +66,7 @@ export default function App() {
         <Route path="*" element={<Page />} />
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
+        <Route path="/category/:id" element={<CategoryPost />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route element={<LoginCheck />}>

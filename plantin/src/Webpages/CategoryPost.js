@@ -1,15 +1,16 @@
 import { useEffect, useContext } from "react";
 import "./Post.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 import Category from "./Category";
 import { PopupContextcreate } from "./context/popupcontext";
 
 export default function Post() {
-  const { results, setResults } = useContext(PopupContextcreate);
+  const { categoryResults, setCategoryResults } =
+    useContext(PopupContextcreate);
   const navigate = useNavigate();
-
+  const { id } = useParams();
   const shuffle = (arrayData) => {
     const shuffledArray = [];
     const usedIndexes = [];
@@ -22,15 +23,23 @@ export default function Post() {
         i++;
       }
     }
-    setResults((oldResults) => [...oldResults, ...shuffledArray]);
+    setCategoryResults((oldCategoryResults) => [
+      ...oldCategoryResults,
+      ...shuffledArray,
+    ]);
   };
 
   let skip = 0;
   const loadmore = () => {
     try {
-      axios.post("http://localhost:3004/", { skip }).then((response) => {
-        shuffle(response.data);
-      });
+      axios
+        .post("http://localhost:3004/category", {
+          skip,
+          id,
+        })
+        .then((response) => {
+          shuffle(response.data);
+        });
       skip += 10;
     } catch (err) {
       console.log(err);
@@ -50,14 +59,17 @@ export default function Post() {
     loadmore();
     window.addEventListener("scroll", handlescroll);
     // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   return (
-    <>
+    <div style={{ paddingTop: "80px" }}>
       <Category />
       <div className="postmaincontainer">
-        {results.map((data) => (
-          <div onClick={() => navigate(`/post/${data._id}`)} key={data._id}>
+        {categoryResults.map((data) => (
+          <div
+            onClick={() => navigate(`/post/${data._id}`)}
+            key={data.imageurl}
+          >
             <div className="cardscontainer">
               <div className="cardimage">
                 <img
@@ -78,6 +90,6 @@ export default function Post() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

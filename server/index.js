@@ -11,7 +11,7 @@ const cred = {
   cert: fs.readFileSync("./ssl/plantinapp_me.crt"),
   ca: fs.readFileSync("./ssl/plantinapp_me.ca-bundle"),
   key: fs.readFileSync("./ssl/plantinapp_me.key"),
-}
+};
 
 dotenv.config({ path: "./.env" });
 cloudinary.config({
@@ -24,11 +24,11 @@ cloudinary.config({
 const app = express();
 app.use((req, res, next) => {
   if (req.protocol === "http") {
-    res.redirect(301, `https://${req.headers.host}${req.url}`)
+    res.redirect(301, `https://${req.headers.host}${req.url}`);
   } else {
     next();
   }
-})
+});
 app.use(cors());
 app.use(express.json());
 
@@ -42,9 +42,10 @@ const collectionComments = db.collection("PostComments");
 const collectionReplays = db.collection("CommentsReplays");
 const collectionCategorys = db.collection("Categorys");
 
-app.get("/", async (req, res) => {
+app.post("/", async (req, res) => {
   try {
-    const data = await collectionPost.find().toArray();
+    const { skip } = req.body;
+    const data = await collectionPost.find().skip(skip).limit(10).toArray();
     res.json(data);
   } catch (err) {
     console.log(err);
@@ -170,6 +171,21 @@ app.get("/category/fetch", async (req, res) => {
   try {
     const response = await collectionCategorys.find().toArray();
     res.json(response);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.post("/category", async (req, res) => {
+  try {
+    const { skip, id } = req.body;
+    const convert = id.charAt(0).toUpperCase() + id.slice(1);
+    const data = await collectionPost
+      .find({ category: convert })
+      .skip(skip)
+      .limit(10)
+      .toArray();
+    res.json(data);
   } catch (err) {
     console.log(err);
   }

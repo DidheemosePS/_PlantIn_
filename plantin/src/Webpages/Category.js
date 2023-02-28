@@ -1,18 +1,17 @@
 import { useContext, useEffect } from "react";
 import "./Category.css";
-import { CategoryContextcreate } from "./context/categoryContext";
 import axios from "axios";
 import { PopupContextcreate } from "./context/popupcontext";
 import { MdDeleteOutline } from "react-icons/md";
 import jwt_decode from "jwt-decode";
 export default function Category() {
-  const { categoryfun } = useContext(CategoryContextcreate);
-  const { categorys, setCategorys } = useContext(PopupContextcreate);
+  const { categorys, setCategorys, categoryfun } =
+    useContext(PopupContextcreate);
   const token = sessionStorage.getItem("ghasjdsbdnewiqyew");
   const deletecategory = async (categoryid) => {
     try {
       const response = await axios.post(
-        "https://plantinapp.me/category/delete",
+        "http://localhost:3004/category/delete",
         {
           categoryid,
         }
@@ -24,13 +23,16 @@ export default function Category() {
   };
 
   useEffect(() => {
-    axios
-      .get("https://plantinapp.me/category/fetch")
-      .then((response) => {
+    try {
+      axios.get("http://localhost:3004/category/fetch").then((response) => {
         setCategorys(response.data);
       });
+    } catch (err) {
+      console.log(err);
+    }
     // eslint-disable-next-line
   }, []);
+
   return (
     <div className="maincategory">
       <div className="category">
