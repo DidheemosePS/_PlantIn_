@@ -56,6 +56,7 @@ export default function Post() {
   };
 
   useEffect(() => {
+    setCategoryResults([]);
     loadmore();
     window.addEventListener("scroll", handlescroll);
     // eslint-disable-next-line

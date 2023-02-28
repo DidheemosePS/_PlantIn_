@@ -47,6 +47,7 @@ export default function Post() {
   };
 
   useEffect(() => {
+    setResults([]);
     loadmore();
     window.addEventListener("scroll", handlescroll);
     // eslint-disable-next-line
