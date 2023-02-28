@@ -33,7 +33,7 @@ export default function Post() {
   const loadmore = () => {
     try {
       axios
-        .post("http://localhost:3004/category", {
+        .post("https://plantinapp.me/category", {
           skip,
           id,
         })

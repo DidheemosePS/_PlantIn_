@@ -11,7 +11,7 @@ export default function Category() {
   const deletecategory = async (categoryid) => {
     try {
       const response = await axios.post(
-        "http://localhost:3004/category/delete",
+        "https://plantinapp.me/category/delete",
         {
           categoryid,
         }
@@ -24,7 +24,7 @@ export default function Category() {
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:3004/category/fetch").then((response) => {
+      axios.get("https://plantinapp.me/category/fetch").then((response) => {
         setCategorys(response.data);
       });
     } catch (err) {

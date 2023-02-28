@@ -8,7 +8,7 @@ export default function SignedUsers() {
   const deleteusers = async (id) => {
     try {
       const deleteuser = await axios.post(
-        "http://localhost:3004/signed/user/delete",
+        "https://plantinapp.me/signed/user/delete",
         {
           id,
         }
@@ -21,7 +21,7 @@ export default function SignedUsers() {
 
   useEffect(() => {
     try {
-      axios.get("http://localhost:3004/signed/users").then((response) => {
+      axios.get("https://plantinapp.me/signed/users").then((response) => {
         setSignedUsers(response.data);
       });
     } catch (err) {

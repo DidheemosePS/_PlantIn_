@@ -28,7 +28,7 @@ export default function Post() {
   let skip = 0;
   const loadmore = () => {
     try {
-      axios.post("http://localhost:3004/", { skip }).then((response) => {
+      axios.post("https://plantinapp.me/", { skip }).then((response) => {
         shuffle(response.data);
       });
       skip += 10;
