@@ -1,13 +1,12 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useState } from "react";
 import "./Post.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 import Category from "./Category";
-import { PopupContextcreate } from "./context/popupcontext";
 
 export default function Post() {
-  const { results, setResults } = useContext(PopupContextcreate);
+  const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
   const shuffle = (arrayData) => {
@@ -47,9 +46,12 @@ export default function Post() {
   };
 
   useEffect(() => {
-    setResults([]);
     loadmore();
     window.addEventListener("scroll", handlescroll);
+    return () => {
+      window.removeEventListener("scroll", handlescroll);
+      setResults([]);
+    };
     // eslint-disable-next-line
   }, []);
 

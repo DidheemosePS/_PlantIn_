@@ -10,15 +10,11 @@ const PopupContext = ({
   setIsAdmin,
 }) => {
   const [categorys, setCategorys] = useState([]);
-  const [results, setResults] = useState([]);
-  const [categoryResults, setCategoryResults] = useState([]);
   const navigate = useNavigate();
   const categoryfun = (item) => {
     if (item === "All Items") {
-      setResults([]);
       navigate("/");
     } else {
-      setCategoryResults([]);
       navigate(`/category/${item}`);
     }
   };
@@ -33,10 +29,6 @@ const PopupContext = ({
         categorys,
         setCategorys,
         categoryfun,
-        results,
-        setResults,
-        categoryResults,
-        setCategoryResults,
       }}
     >
       {children}
