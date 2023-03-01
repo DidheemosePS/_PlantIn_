@@ -68,10 +68,7 @@ export default function Post() {
       <Category />
       <div className="postmaincontainer">
         {categoryResults.map((data) => (
-          <div
-            onClick={() => navigate(`/post/${data._id}`)}
-            key={data.imageurl}
-          >
+          <div onClick={() => navigate(`/post/${data._id}`)} key={data._id}>
             <div className="cardscontainer">
               <div className="cardimage">
                 <img
