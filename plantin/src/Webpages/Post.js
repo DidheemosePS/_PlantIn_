@@ -46,12 +46,16 @@ export default function Post() {
   };
 
   useEffect(() => {
-    loadmore();
-    window.addEventListener("scroll", handlescroll);
-    return () => {
-      window.removeEventListener("scroll", handlescroll);
-      setResults([]);
-    };
+    try {
+      loadmore();
+      window.addEventListener("scroll", handlescroll);
+      return () => {
+        window.removeEventListener("scroll", handlescroll);
+        setResults([]);
+      };
+    } catch (err) {
+      console.log(err);
+    }
     // eslint-disable-next-line
   }, []);
 
