@@ -59,8 +59,8 @@ export default function MainRouter() {
           ref={accountbtn}
           onClick={() => setAccountpopup(!accountpopup)}
         >
-          <HiMenu size={25} className="iconsspace" />
-          <BsPersonCircle size={30} />
+          <HiMenu size={25} />
+          <BsPersonCircle size={30} className="iconsPerson" />
         </button>
       </div>
       {accountpopup && <Accountpopup />}
