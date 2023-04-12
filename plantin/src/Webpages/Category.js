@@ -8,12 +8,13 @@ export default function Category() {
   const { categorys, setCategorys, categoryfun } =
     useContext(PopupContextcreate);
   const token = sessionStorage.getItem("ghasjdsbdnewiqyew");
-  const deletecategory = async (categoryid) => {
+  const deletecategory = async (categoryid, categoryname) => {
     try {
       const response = await axios.post(
         "https://plantinapp.me/category/delete",
         {
           categoryid,
+          categoryname
         }
       );
       setCategorys(response.data);
@@ -56,7 +57,7 @@ export default function Category() {
             {token && jwt_decode(token).role === "admin" && (
               <button
                 className="categorydeletebtn"
-                onClick={() => deletecategory(data._id)}
+                onClick={() => deletecategory(data._id, data.category)}
               >
                 <MdDeleteOutline size={20} className="icons" />
               </button>
