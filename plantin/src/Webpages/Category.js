@@ -4,10 +4,13 @@ import axios from "axios";
 import { PopupContextcreate } from "./context/popupcontext";
 import { MdDeleteOutline } from "react-icons/md";
 import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+
 export default function Category() {
   const { categorys, setCategorys, categoryfun } =
     useContext(PopupContextcreate);
   const token = sessionStorage.getItem("ghasjdsbdnewiqyew");
+  const navigate = useNavigate()
   const deletecategory = async (categoryid, categoryname) => {
     try {
       const response = await axios.post(
@@ -18,6 +21,7 @@ export default function Category() {
         }
       );
       setCategorys(response.data);
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
